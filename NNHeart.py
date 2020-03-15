@@ -4,10 +4,10 @@ from pandas import read_csv
 import matplotlib.pyplot as plt
 
 
-trainPath = '~/HeartDisease/trainrand.csv'
+trainPath = '~/HeartDisease/heart.csv'
 trainData = read_csv(trainPath)
 
-testPath = "~/HeartDisease/testrand.csv"
+testPath = "~/HeartDisease/heart.csv"
 testData = read_csv(testPath)
 
 arrayTrain = trainData.values
@@ -28,21 +28,21 @@ model.add(Dense(8, init='uniform', activation='sigmoid', use_bias=True))
 model.add(Dense(1, init='uniform', activation='sigmoid'))
 
 model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
-history = model.fit(X_train, Y_train, nb_epoch = 800)
+history = model.fit(X_train, Y_train, nb_epoch = 800, validation_data = (X_test, Y_test))
 
 scores = model.evaluate(X_test, Y_test)
 print("%s: %.2f%%" % (model.metrics_names[1], scores[1]*100))
 
-plt.plot(history.history['accuracy'])
+plt.plot(history.history['val_accuracy'])
 plt.title('Model accuracy')
 plt.ylabel('Accuracy')
-plt.xlabel('Epoch')
-plt.legend(['Train', 'Test'], loc='upper left')
+plt.xlabel('Iteration')
+plt.legend(['Test'], loc='upper left')
 plt.show()
 
-plt.plot(history.history['loss'])
-plt.title('Model loss')
-plt.ylabel('Loss')
-plt.xlabel('Epoch')
-plt.legend(['Train', 'Test'], loc='upper left')
+plt.plot(history.history['val_loss'])
+plt.title('Mean square error')
+plt.ylabel('Mean square error')
+plt.xlabel('Iteration')
+plt.legend(['Test'], loc='upper left')
 plt.show()
