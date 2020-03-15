@@ -1,12 +1,19 @@
 ---
 title: "Heart Disease UCI, Analysis and Study"
 output:
+  pdf_document: default
   html_document:
     df_print: paged
-  pdf_document: default
 ---
 
 # Analysis and Study of UCI Heart Disease dataset
+
+```{r, echo=FALSE, comment="", tidy=TRUE, error=TRUE}
+set.seed(1234)
+today <- date()
+today <- unlist(strsplit(today, " "))
+cat("by Prateek Sarangi,", today[1], ",", today[2:3], today[5])
+```
 
 ## Dataset details
 ### Attribute information

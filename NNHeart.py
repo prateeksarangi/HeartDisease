@@ -28,10 +28,30 @@ model.add(Dense(8, init='uniform', activation='sigmoid', use_bias=True))
 model.add(Dense(1, init='uniform', activation='sigmoid'))
 
 model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
-history = model.fit(X_train, Y_train, nb_epoch = 800, validation_data = (X_test, Y_test))
+history = model.fit(X_train, Y_train, nb_epoch = 1500, validation_data = (X_test, Y_test))
 
 scores = model.evaluate(X_test, Y_test)
 print("%s: %.2f%%" % (model.metrics_names[1], scores[1]*100))
+
+
+MyList = history.history['accuracy']
+MyFile=open('Accuracy.txt','a')
+
+for element in MyList:
+    MyFile.write(str(element))
+    MyFile.write('\n')
+MyFile.close()
+
+
+MyList = history.history['loss']
+MyFile=open('MSE.txt','a')
+
+for element in MyList:
+    MyFile.write(str(element))
+    MyFile.write('\n')
+MyFile.close()
+
+
 
 plt.plot(history.history['accuracy'])
 plt.title('Model accuracy')

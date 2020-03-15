@@ -1,0 +1,10 @@
+name: Publish Document
+title:
+username:
+account: rpubs
+server: rpubs.com
+hostUrl: rpubs.com
+appId: https://api.rpubs.com/api/v1/document/585175/53b82e909afb4352be074d1ee6a35f00
+bundleId: https://api.rpubs.com/api/v1/document/585175/53b82e909afb4352be074d1ee6a35f00
+url: http://rpubs.com/prateeksarangi/585175
+when: 1584277423.51054
