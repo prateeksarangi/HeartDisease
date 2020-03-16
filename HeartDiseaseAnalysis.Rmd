@@ -1,12 +1,10 @@
 ---
-title: "Heart Disease UCI, Analysis and Study"
+title: "Analysis and Study of UCI Heart Disease dataset"
 output:
-  pdf_document: default
   html_document:
     df_print: paged
+  pdf_document: default
 ---
-
-# Analysis and Study of UCI Heart Disease dataset
 
 ```{r, echo=FALSE, comment="", tidy=TRUE, error=TRUE}
 set.seed(1234)
@@ -15,6 +13,8 @@ today <- unlist(strsplit(today, " "))
 cat("by Prateek Sarangi,", today[1], ",", today[2:3], today[5])
 ```
 
+Part 1:- Getting the feature dataset from the actual data
+---------------------------------------------------------------------------
 ## Dataset details
 ### Attribute information
 - age  
@@ -167,7 +167,7 @@ heart["exang"] <- as.data.frame(lapply(heart["exang"], function(x){replace(x, x 
 ```
 
 ## The dataset after the modifications are made.
-```{r eval=TRUE, epoch = FALSE}
+```{r echo = FALSE}
 head(heart)
 ```
 
@@ -203,8 +203,62 @@ write.csv(trainseq, "~/HeartDisease/trainseq.csv", row.names = FALSE)
 write.csv(testseq, "~/HeartDisease/testseq.csv", row.names = FALSE)
 ```
 
+Part 2:- Analysis of the neural network model
+---------------------------------------------------------------------------
+## Plot for varying the number of hidden layers
+Neural network with various number of hidden layers are tested and the results of the test accuracy are ploted.  
+Input layer contains **Thirteen** input neurons, each hidden layer has **Tweleve** neurons and the output layer has **One** neuron with **Two** classes.  
+- Class zero -> The patient is not suffering from heart disease.  
+- Class one -> The patient is suffering from heart disease.  
+
+### Plot of test accuracy for different hidden layers
+```{r echo=FALSE}
+LayerAcc <- read.csv("~/HeartDisease/LayerAcc.csv", header=FALSE)
+LayerAcc.bar <- barplot(LayerAcc$V2, names.arg=LayerAcc$V1, col = 'blue')
+```
+
+### Conclusion from the plot
+According to the test runs we can see that model with **Three**, **Four**, **Five** and **Six** hidden layers, having **Tweleve** neuron each perform better than the other choosen models.  
+
+## Plot for varying the number of neurons
+## Plots for Accuracy and Mean Square Error
+The neural network with the best results is run **Twinty** times and the average mean square error, and accuracy was taken and plot in the following graph.  
+```{r}
+```
+
+### Cloclusion from the plot
 
 
+### Structure of the model
+- Input layer -> 13 input neuron  
+- First hidden layer -> 12 hidden neuraon  
+- Second hidden layer -> 12 hidden neuraon  
+- Third hidden layer -> 10 hidden neuraon  
+- Fourth hidden layer -> 8 hidden neuraon  
+- Fifth hidden layer -> 8 hidden neuraon  
+- Output layer -> 1 neuron, 2 classes  
+
+### Plot for Accuracy of the model
+```{r echo = FALSE}
+tableAccuracy <- read.csv("~/HeartDisease/tableAccuracy.csv", header=FALSE, sep=";")
+
+meanAccuracy <- colMeans(tableAccuracy[sapply(tableAccuracy, is.numeric)])
+itr <- 1:1500
+
+plot(itr, meanAccuracy, "l", xlab = "Iteration", ylab = "Accuracy",
+     col = "blue", lwd = 2)
+```
+
+### Plot for Mean Square Error of the model
+```{r echo = FALSE}
+tableMSE <- read.csv("~/HeartDisease/tableMSE.csv", header=FALSE, sep=";")
+
+meanMSE <- colMeans(tableMSE[sapply(tableMSE, is.numeric)])
+itr <- 1:1500
+
+plot(itr, meanMSE, "l", xlab = "Iteration", ylab = "Mean Square Error",
+     col = "orange", lwd = 2)
+```
 
 
 

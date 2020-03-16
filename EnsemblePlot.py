@@ -6,10 +6,12 @@ import matplotlib.pyplot as plt
 data = pd.read_csv('Accuracy.txt', header = None)
 array = data.to_numpy()
 tableAccuracy = array.reshape(20, 1500)
+np.savetxt("tableAccuracy.csv", tableAccuracy, delimiter=";")
 
 data = pd.read_csv('MSE.txt', header = None)
 array = data.to_numpy()
 tableMSE = array.reshape(20, 1500)
+np.savetxt("tableMSE.csv", tableMSE, delimiter=";")
 
 dfAccuracy = pd.DataFrame(tableAccuracy)
 dfMSE = pd.DataFrame(tableMSE)
