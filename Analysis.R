@@ -14,7 +14,10 @@ plot(itr, meanMSE, "l", main = "Accuracy of Model",
      col = "orange", lwd = 2)
 
 LayerAcc <- read.csv("~/HeartDisease/LayerAcc.csv", header=FALSE)
-LayerAcc.bar <- barplot(LayerAcc$V2, main="Car Distribution",
+LayerAcc.bar <- barplot(LayerAcc$V2,
         names.arg=LayerAcc$V1, col = 'blue')
-ablines(x = LayerAcc.bar, y = LayerAcc$V2[3])
+#ablines(x = LayerAcc.bar, y = LayerAcc$V2[3])
 
+NeuronAcc <- read.csv("~/HeartDisease/Structure.csv", sep=";")
+NeuraonAcc.bar <- barplot(NeuronAcc$Accuracy, 
+                          names.arg=NeuronAcc$Structure, col = 'red')

@@ -31,10 +31,10 @@ heart["thalach"] <- dfNorm
 
 dfNorm <- as.data.frame(lapply(heart["cp"], normalize))
 heart["cp"] <- dfNorm
-heart["cp"] <- as.data.frame(lapply(heart["cp"], function(x){replace(x, between(x, 0.0, 0.25), 0.1)}))
-heart["cp"] <- as.data.frame(lapply(heart["cp"], function(x){replace(x, between(x, 0.25, 0.5), 0.4)}))
-heart["cp"] <- as.data.frame(lapply(heart["cp"], function(x){replace(x, between(x, 0.5, 0.75), 0.6)}))
-heart["cp"] <- as.data.frame(lapply(heart["cp"], function(x){replace(x, between(x, 0.75, 1), 0.9)}))
+heart["cp"] <- as.data.frame(lapply(heart["cp"], function(x){replace(x, between(x, 0.0, 0.25), 0.9)}))
+heart["cp"] <- as.data.frame(lapply(heart["cp"], function(x){replace(x, between(x, 0.25, 0.5), 0.9)}))
+heart["cp"] <- as.data.frame(lapply(heart["cp"], function(x){replace(x, between(x, 0.5, 0.75), 0.1)}))
+heart["cp"] <- as.data.frame(lapply(heart["cp"], function(x){replace(x, between(x, 0.75, 1), 0.01)}))
 
 
 dfNorm <- as.data.frame(lapply(heart["thal"], normalize))
