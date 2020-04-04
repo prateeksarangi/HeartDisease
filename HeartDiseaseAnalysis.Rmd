@@ -1,9 +1,9 @@
 ---
 title: "Analysis and Study of UCI Heart Disease dataset"
 output:
-  pdf_document: default
   html_document:
     df_print: paged
+  pdf_document: default
 ---
 
 ```{r, echo=FALSE, comment="", tidy=TRUE, error=TRUE}
