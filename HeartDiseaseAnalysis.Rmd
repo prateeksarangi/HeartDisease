@@ -3,6 +3,7 @@ title: "Analysis and Study of UCI Heart Disease dataset"
 output:
   html_document:
     df_print: paged
+  word_document: default
   pdf_document: default
 ---
 
@@ -331,6 +332,35 @@ itr <- 1:1500
 plot(itr, meanMSE, "l", xlab = "Iteration", ylab = "Mean Square Error",
      col = "orange", lwd = 2)
 ```
+
+## Confusion matrix and performance analysis
+```{r echo=FALSE}
+performance_Matrix <- read.table("~/HeartDisease/performance_Matrix.txt", quote="\"", comment.char="")
+FN <- performance_Matrix$X0[1]
+FP <- performance_Matrix$X1[1]
+TN <- performance_Matrix$X0[2]
+TP <- performance_Matrix$X1[2]
+knitr::include_graphics('PerformanceMatrix.png')
+```
+
+### Performance matrix analysis
+```{r}
+precision <- TP/(TP+FP)
+recall <- TP/(TP+FN)
+sensitivity <- TP/(TP+FN)
+specificity <- TN/(TN+FP)
+FNR <- FN/(FN+TP)
+F_score <- (2*precision*recall)/(precision+recall)
+MCC <- ((TP*TN)-(FP*FN)) / (sqrt((TP+FP)*(TP+FN)*(TN+FP)*(TN+FN)))
+print(precision)
+print(recall)
+print(sensitivity)
+print(specificity)
+print(FNR)
+print(F_score)
+print(MCC)
+```
+
 
 
 
