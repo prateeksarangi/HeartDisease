@@ -1,13 +1,8 @@
 import numpy as np
 import pandas as pd
-import seaborn as sns
 import matplotlib.pyplot as plt
-from sklearn.metrics import classification_report
-from sklearn.model_selection import train_test_split
-from sklearn.metrics import f1_score
 from sklearn.metrics import confusion_matrix
 from keras.utils.np_utils import to_categorical
-from sklearn.utils import class_weight
 import warnings
 warnings.filterwarnings('ignore')
 
@@ -38,8 +33,6 @@ y_train = to_categorical(target_train)
 y_test = to_categorical(target_test)
 X_train = train_df.iloc[:, :186].values
 X_test = test_df.iloc[:, :186].values
-# for i in range(len(X_train)):
-#    X_train[i,:186]= add_gaussian_noise(X_train[i,:186])
 X_train = X_train.reshape(len(X_train), X_train.shape[1], 1)
 X_test = X_test.reshape(len(X_test), X_test.shape[1], 1)
 
@@ -109,7 +102,6 @@ from keras.layers import Dense, Convolution1D, MaxPool1D, Flatten, Dropout
 from keras.layers import Input
 from keras.models import Model
 from keras.layers.normalization import BatchNormalization
-import keras
 from keras.callbacks import EarlyStopping, ModelCheckpoint
 
 model, history = network(X_train, y_train, X_test, y_test)
