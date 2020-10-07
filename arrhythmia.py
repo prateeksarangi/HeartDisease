@@ -11,8 +11,8 @@ from sklearn.utils import class_weight
 import warnings
 warnings.filterwarnings('ignore')
 
-train_df=pd.read_csv('/kaggle/input/heartbeat/mitbih_train.csv',header=None)
-test_df=pd.read_csv('/kaggle/input/heartbeat/mitbih_test.csv',header=None)
+train_df=pd.read_csv('~/HeartDisease/ArrhythmiaDataset/mitbih_train.csv',header=None)
+test_df=pd.read_csv('~/HeartDisease/ArrhythmiaDataset/mitbih_test.csv',header=None)
 
 from sklearn.utils import resample
 df_1=train_df[train_df[187]==1]
